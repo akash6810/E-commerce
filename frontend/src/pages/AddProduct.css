@@ -1,0 +1,28 @@
+.product-form-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.product-form {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.product-form h2 {
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.form-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
