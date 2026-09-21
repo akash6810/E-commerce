@@ -182,3 +182,62 @@
 .btn-details:hover {
   background-color: #0369a1;
 }
+
+/* Container holding the buttons */
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* Common styling for all card action buttons */
+.card-actions button {
+  flex: 1; /* Makes all buttons take equal width */
+  height: 40px; /* Uniform height for all buttons */
+  padding: 0 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap; /* Prevents text from breaking into two lines */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Individual Button Variant Styles */
+
+/* 1. View Details Button */
+.btn-details {
+  background-color: #007bc7;
+  color: #ffffff;
+}
+.btn-details:hover {
+  background-color: #005fa3;
+}
+
+/* 2. Add to Cart / Your Item Button */
+.btn-add-cart {
+  background-color: #f0f4f8;
+  color: #1e293b;
+  border: 1px solid #cbd5e1 !important;
+}
+.btn-add-cart:hover {
+  background-color: #e2e8f0;
+}
+
+/* 3. Delete Button */
+.btn-delete {
+  background-color: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #fecdd3 !important;
+}
+.btn-delete:hover {
+  background-color: #ffe4e6;
+}

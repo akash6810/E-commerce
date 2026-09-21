@@ -28,16 +28,28 @@ const ProductList = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+  const getSellerId = (itemUser) => {
+    if (!itemUser) return null;
+    return typeof itemUser === 'object' ? itemUser._id : itemUser;
+  };
 
+  const currentUserId = user?._id || user?.id;
   const handleAddToCart = (product) => {
-  if (!user) {
-    alert('Please log in to add items to your cart.');
-    navigate('/login', { state: { from: window.location.pathname } });
-    return;
-  }
+    if (!user) {
+      alert('Please log in to add items to your cart.');
+      navigate('/login', { state: { from: window.location.pathname } });
+      return;
+    }
 
-  addToCart(product);
-};
+    const sellerId = getSellerId(product.user);
+
+    if (currentUserId && String(currentUserId) === String(sellerId)) {
+      alert('You cannot add your own product to the cart.');
+      return;
+    }
+
+    addToCart(product);
+  };
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
@@ -48,7 +60,17 @@ const ProductList = () => {
       alert(err.response?.data?.message || 'Error deleting product');
     }
   };
+  
+  const handleMyProduct = () => {
+    if (!user) {
+      alert('Please log in to view items that you posted.');
+      navigate('/login', { state: { from: '/my-products' } });
+      return;
+    }
 
+    // Navigate directly to my-products route
+    navigate('/my-products');
+  };
   const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
   );
@@ -97,14 +119,25 @@ const ProductList = () => {
                     View Details
                   </button>
 
-                  <button
-                    onClick={() => handleAddToCart(item)}
-                    className="btn-add-cart"
-                  >
-                    Add to Cart
-                  </button>
+                  {/* Conditionally render Add to Cart OR Your Product indicator */}
+                  {currentUserId && String(currentUserId) === String(getSellerId(item.user)) ? (
+                    <button
+                      className="btn-add-cart"
+                      onClick={handleMyProduct}
+                      style={{ opacity: 0.8, cursor: 'pointer' }}
+                    >
+                      Your Item
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleAddToCart(item)}
+                      className="btn-add-cart"
+                    >
+                      Add to Cart
+                    </button>
+                  )}
 
-                  {user && item.user && user._id === (item.user._id || item.user) && (
+                  {currentUserId && String(currentUserId) === String(getSellerId(item.user)) && (
                     <button
                       onClick={() => handleDelete(item._id)}
                       className="btn-delete"
