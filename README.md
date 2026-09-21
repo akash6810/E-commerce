@@ -14,49 +14,4 @@ A full-stack e-commerce application built using MongoDB, Express.js, React, and 
 * **Backend:** Node.js, Express.js, MongoDB (Mongoose)
 * **Integrations:** Razorpay API, Nodemailer
 
-**Environment Variables**
 
-Create a `.env` file inside the `backend` directory with the following variables:
-
-```env
-PORT=5000(you can choose any port number)
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-RAZORPAY_KEY_ID=your_razorpay_key_id
-RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_gmail_app_password
-```
-
-**Getting Started**
-
-**1. Backend Setup**
-Bash
-
-cd backend
-
-npm install
-
-npm start
-
-**2. Frontend Setup**
-Bash
-
-cd frontend
-
-npm install
-
-npm start
-
-**3. Push the README to GitHub**
-
-(in powershell)
-
-git add README.md
-
-git commit -m "Add README with setup and configuration details"
-
-git push
-
-
-**Enjoy😊❤️**
